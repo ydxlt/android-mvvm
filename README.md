@@ -1,7 +1,7 @@
 
 ## Library
 
-A data-driven implementation of the MVVM software architecture pattern based on Android Architecture Components (kotlin), incorporating RxJava2, Retrofit2, DataBinding and other open source frameworks
+A data-driven implementation of the MVVM software architecture pattern based on Android Architecture Components (kotlin), incorporating RxJava2, Retrofit2, DataBinding and other open source frameworks.
 
 ## Base
 
@@ -30,9 +30,9 @@ extends BaseActivity and must cover the following methods
 
 ### BaseViewModelImpl
 
-if your use RxJava,you need subscribe by `subscribe(disposable: Disposable)`
+if you use RxJava,you need subscribe by `subscribe(disposable: Disposable)`
 
 ### BaseModelImpl
 
 
-if your use RxJava and subscribe in this class,you need subscribe by `subscribe(disposable: Disposable)`
+if you use RxJava and subscribe in this class,you need subscribe by `subscribe(disposable: Disposable)`
