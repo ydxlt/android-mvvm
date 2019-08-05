@@ -1,6 +1,7 @@
 package org.yzjt.sdk.mvvm.base
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
@@ -35,6 +36,7 @@ open abstract class BaseViewModelImpl<T : Model> : AndroidViewModel, BaseViewMod
 
     override fun onCleared() {
         super.onCleared()
+        Log.d(TAG,"onCleared()")
         mModel?.onCleared()
         //ViewModel销毁时会执行，同时取消所有异步任务
         if (mCompositeDisposable != null) {
