@@ -8,7 +8,7 @@ import org.yzjt.sdk.mvvm.model.Model
 /**
  * Created by LT on 2019/8/5.
  */
-class BaseModelImpl : Model {
+open class BaseModelImpl : Model {
 
     /* 管理RxJava的Observable，防止异步操作造成的内存泄漏 */
     protected val mCompositeDisposable: CompositeDisposable by lazy {

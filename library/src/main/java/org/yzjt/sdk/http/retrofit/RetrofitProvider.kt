@@ -17,9 +17,14 @@ object RetrofitProvider {
 
     // 超时时间
     private const val DEFAULT_TIMEOUT = 20L
-    private const val HOST = "http://10.0.0.247"
+    private var HOST = "http://10.0.0.247"
     // 缓存时间
     private const val CACHE_TIMEOUT = 10 * 1024 * 1024
+
+    fun host(host:String) : RetrofitProvider {
+        this.HOST = host
+        return this
+    }
 
     private val retrofit:Retrofit by lazy {
         // config httpClient,you can custom it
@@ -47,4 +52,6 @@ object RetrofitProvider {
         }
         return retrofit.create(service)
     }
+
+
 }

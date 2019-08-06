@@ -1,6 +1,9 @@
 package org.yzjt.sdk.mvvm.base
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import org.yzjt.sdk.mvvm.viewmodel.BaseViewModel
@@ -12,16 +15,18 @@ import org.yzjt.sdk.view.BindView
  * @param <H> The type of ViewDataBinding
  * @param <VM> The type of view model
  */
-abstract class BaseBindActivity<T,H : ViewDataBinding,VM : BaseViewModel<T>> : BaseActivity<T, VM>(),
-    BindView {
+abstract class BaseBindFragment<T,H : ViewDataBinding,VM : BaseViewModel<T>> : BaseFragment<T,VM>(),BindView {
 
     protected lateinit var mDataBinding:H
 
-    override fun initContentView(savedInstanceState: Bundle?) {
-        mDataBinding = DataBindingUtil.setContentView(this,getContentViewId(savedInstanceState))
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        mDataBinding = DataBindingUtil.inflate(inflater,getContentViewId(savedInstanceState),container,false)
+        mViewModel = getViewModel()
         mDataBinding.setVariable(getVariableId(),mViewModel)
         // bind LiveData to DataBinding,and Lifecycle can be observer by LiveData
         mDataBinding.lifecycleOwner = this
+        initView()
+        return mDataBinding.root
     }
 
     override fun initDataBinding(savedInstanceState: Bundle?) {
@@ -33,8 +38,8 @@ abstract class BaseBindActivity<T,H : ViewDataBinding,VM : BaseViewModel<T>> : B
         throw UnsupportedOperationException("Please override this method and return a effective variable id.")
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         mDataBinding?.unbind()
     }
 }

@@ -1,4 +1,4 @@
-package org.yzjt.sdk.nozzle
+package org.yzjt.sdk.view
 
 import android.os.Bundle
 

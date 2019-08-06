@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="GeekBanner">
+        <attr name="clipChildren" format="boolean"></attr>
+        <attr name="clipToPadding" format="boolean"></attr>
+        <attr name="pager_padding_left" format="dimension|reference"></attr>
+        <attr name="pager_padding_right" format="dimension|reference"></attr>
+        <attr name="pager_margin" format="dimension|reference"></attr>
+    </declare-styleable>
+</resources>

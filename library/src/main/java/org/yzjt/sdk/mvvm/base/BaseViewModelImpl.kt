@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
+import org.yzjt.sdk.http.ResponseData
 import org.yzjt.sdk.mvvm.viewmodel.BaseViewModel
 import org.yzjt.sdk.mvvm.model.Model
 
@@ -33,6 +34,13 @@ open abstract class BaseViewModelImpl<T : Model> : AndroidViewModel, BaseViewMod
         mModel = getModel()
     }
 
+    fun <T> consumerError(throwable: Throwable) : ResponseData<T> {
+        var msg = throwable.message;
+        if(msg == null){
+            msg = "unknow error."
+        }
+        return  ResponseData<T>(0, msg,null)
+    }
 
     override fun onCleared() {
         super.onCleared()

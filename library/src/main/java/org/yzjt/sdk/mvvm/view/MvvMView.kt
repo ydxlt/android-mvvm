@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 import org.yzjt.sdk.mvvm.viewmodel.BaseViewModel
-import org.yzjt.sdk.nozzle.BaseView
+import org.yzjt.sdk.view.BaseView
 
 /**
  * Created by LT on 2019/7/31.
